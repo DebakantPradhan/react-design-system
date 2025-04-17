@@ -1,3 +1,6 @@
+// Import styles
+import './index.css';
+
 // Typography components
 export * from './components/typography';
 

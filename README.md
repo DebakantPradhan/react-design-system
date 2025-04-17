@@ -14,9 +14,11 @@ npm install devk-react-ui
 
 ## Usage
 
-Import components from the library:
+Import the pre-bundled styles and components:
 
 ```jsx
+// In your main application file
+import 'devk-react-ui/styles.css';
 import { Button, Heading, Alert } from 'devk-react-ui';
 
 function App() {
@@ -142,10 +144,6 @@ Components in this design system are built with accessibility in mind:
 - Color contrast ratios meet WCAG standards
 - Components scale well across different screen sizes
 
-## Customization
-
-The design system can be customized by changing the Tailwind CSS configuration or by providing custom props to components.
-
 ## Contributing
 
 1. Fork the repository
@@ -179,6 +177,42 @@ npm run build
 npm run build-storybook
 ```
 
-## License
+## Advanced Customization with Tailwind
 
-MIT
+If you need more customization options, you can configure Tailwind CSS in your project:
+
+```bash
+# Install peer dependencies
+npm install tailwindcss postcss autoprefixer postcss-import
+npx tailwindcss init -p
+```
+
+Configure your `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/devk-react-ui/**/*.{js,jsx,ts,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Ensure your `postcss.config.js` includes:
+
+```js
+module.exports = {
+  plugins: {
+    'postcss-import': {},
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+```
+
+This approach allows you to customize the design system with your own theme configuration.

@@ -22,7 +22,15 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
         },
+        // Ensure CSS files are included in the build with the correct name
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'styles.css';
+          if (assetInfo.name === 'devk-react-ui.css') return 'styles.css';
+          return assetInfo.name || '';
+        },
       },
     },
+    // Ensure CSS is extracted to a separate file
+    cssCodeSplit: false,
   },
 })
